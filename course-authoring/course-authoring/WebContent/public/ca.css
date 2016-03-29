@@ -1,0 +1,312 @@
+/*
+CourseAuthoring
+Author: Fei Han
+Group 3
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, select
+, caption,  p {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+	display: block;
+}
+
+body{
+	width: 100%;
+	height: 100%;
+	font-family: Verdana;
+	font-size: 11px;
+	background-color: #003f80;
+}
+
+a{
+	color: #666;
+}
+
+#userInfo{
+	text-align: center;
+	background-color: #ccc;
+	padding: 5px;
+}
+
+#loadMask{
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.6);
+	position: absolute;
+	z-index: 3000;
+	display: none;
+}
+
+.wrap{
+	width: 1000px;
+	height: 590px;
+	position: relative;
+	margin: 15px auto;
+	background-color: white;
+	padding: 10px 10px 10px 10px;
+}
+
+.cNotifyContent{
+	display: inline;
+	font-weight: bold;
+}
+
+.toolbar{
+	margin-top:10px;
+}
+
+.leftWrapper{
+	float: left;
+	width: 280px;
+	/*height: 100%;*/
+	margin-right: 15px;
+}
+
+.rightWrapper{
+	float: left;
+	width: 660px;
+	/*height: 100%;*/
+}
+
+.title1{
+	text-align: center;
+	width: 100%;
+	line-height: 20px;
+	margin-bottom: 5px;
+	color: #bbb;
+}
+
+.aList, .pool{
+	float : left;
+}
+
+.aList{
+	width: 315px;
+	padding: 0px 15px 0px 0px;
+}
+
+.pool{
+	width: 300px;
+}
+
+ol{
+	width: 100%;
+}
+
+ol li{
+	padding: 15px;
+	color: #0073ea;
+	white-space: pre-line;
+	word-wrap: break-word;
+	word-break: break-all;
+	border-bottom: 1px solid #ddd;
+	background-color: white;
+}
+
+ol li:hover{
+	background-color: #0073ea;
+	color: white;
+	cursor: move;
+}
+
+ol li a{
+	display: block;
+	float: right;
+	padding: 5px;
+	margin-top: -5px;
+	margin-right: 5px;
+}
+
+ol li a:hover{
+	cursor: pointer;
+	color: white;
+}
+
+li.ui-selected{
+	color: #FF0084;
+	font-weight: bold;
+	background-color: #eee;
+}
+
+.tab-icon{
+	display: block;
+	float: left;
+	margin: 5px 5px 5px 0px;
+}
+
+.tab-icon:hover{
+	cursor: pointer;
+}
+
+.plate{
+	background-color: #f6f6f6;
+	border: 1px solid #ddd;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+label{
+	padding: 10px 0px 5px 0px;
+	color: #999;
+}
+
+/*
+	list plate personalization
+*/
+.uplate{
+	height: 380px;
+}
+
+.aplate{
+	height: 305px;
+}
+
+.pplate{
+	height: 210px;
+}
+
+.rplate{
+	height: 260px;
+}
+
+.proplate{
+	height: 260px;
+}
+.propoolplate{
+	height: 180px;
+}
+
+.proInfo{
+	height: 85px;
+	margin-top: 10px;
+	padding: 0;
+	align: middle;
+}
+/*
+	pool objects
+*/
+.aAuthor{
+	width: 300px;
+	height: 32px;
+	border: 1px solid #DDD;
+}
+
+.aQuery{
+	width: 293px;
+	height: 26px;
+	padding-left: 5px;
+	border: 1px solid #DDD;
+}
+
+.a-drag{
+	width: 250px;
+	background-color: #666;
+	border: 0px;
+	color: white;
+	cursor: move;
+}
+
+/*
+	Function buttons
+*/
+
+.funcWrapper{
+	margin-top: 5px;
+}
+
+.functions li{
+	float:left;
+	padding: 4px;
+	margin:2px;
+}
+
+.functions li:hover{
+	cursor: pointer;
+}
+
+/*
+	Preview
+*/
+.preview object{
+	width: 100%;
+	height: 100%;
+}
+
+/*
+	Datatable
+*/
+.span-cid, .span-cIdx{
+	display: none;
+}
+
+button{
+	margin: 0px 5px 0px 5px;
+	padding: 4px;
+}
+
+button:hover{
+	cursor: pointer;
+}
+
+button img{
+	display: inline;
+	margin-right: 5px;
+}
+
+button.topic{
+	background-color: #80b5ff;
+	border: 1px solid #1E6F7F;
+}
+
+button.meta{
+	background-color: #80b5ff;
+	border: 1px solid #157F3B;
+}
+
+button.del{
+	background-color: #FFA695;
+	border: 1px solid #FF6648;
+}
+
+/*
+	MetaInfo
+*/
+.metainfo > div{
+	float: left;
+	margin: 0px 20px 0px 5px;
+}
+
+.cName, .cCode, .cDomain{
+	padding: 5px;
+	border: 1px solid #ccc;
+}
+
+.metainfo .cName{
+	width: 350px;
+}
+
+.cCode{
+	width: 150px;
+}
+
+.cDomain{
+	width: 150px;
+}
+
+.submitAction{
+	text-align: right;
+	margin: 10px 10px 15px 0px;
+}
