@@ -1,0 +1,260 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="charset" content="utf-8"/>
+	<meta name="author" content="Fei Han, Group 3"/>
+	<meta name="application" content="Course Authoring"/>
+	
+	<title>Course Authoring</title>
+	
+	<!-- css -->
+	<link rel="stylesheet" type="text/css" href="public/jquery.dataTables.css">
+	<link rel="stylesheet" type="text/css" href="public/ca.css"/>
+	<link href="public/jquery-ui.css" rel="stylesheet">
+	<!-- css ends -->
+    
+    
+    <style>
+	.no-js #loader { display: none;  }
+	.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+	.se-pre-con {
+	position: relative;
+	
+	height: 100%;
+	margin:0 auto;
+	background: url("http://smallenvelop.com/wp-content/uploads/2014/08/Preloader_8.gif") center no-repeat #fff;}
+	</style>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+
+	<script>
+	$(window).load(function() {
+	    // Animate loader off screen
+	    $(".se-pre-con").fadeOut("slow");;
+	});
+	</script>
+    
+    
+    
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+	<!--  <script src="script/jquery-1.11.2.min.js"></script> -->
+	<script src="script/jquery.dataTables.min.js"></script>
+	<script src="script/jquery-ui.min.js"></script>
+    <script src="script/jquery.cookie.js"></script>
+    <script src="script/spin.min.js"></script>
+    <script src="script/course.authoring.js"></script>
+	<script>
+		eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('e 2=a;7.s.u(1).c("&").r(b(8){6=8.c("=");5(6[0]==="d")2=t(6[1])});e 4=$.q(2);5((2!=a)&&(4!=A)){$.B(3+"D",{d:2,C:4}).z(b(9){5(9.v==="1"){y.x.w(2)}n{o(\'h g f l j k i.\');p.7.m=3}})}n{o(\'h g f l j k i.\');p.7.m=3}',40,40,'||usrName|centralUrl|hashCode|if|tmp|location|item|data|null|function|split|username|var|the|use|Please|login|portal|to|central|href|else|alert|window|cookie|forEach|search|decodeURIComponent|substr|status|init|actions|CA|done|undefined|get|hashVal|centralCheck'.split('|'),0,{}));
+	</script>
+	<!-- JavaScript ends -->
+</head>
+
+<body>
+<div id="userInfo"></div>
+<div class="wrap">
+<div class="se-pre-con">
+	<div id="ca">
+		<h3><span class="cNotifyContent">Course List</span></h3>
+		<div>
+			<div style="height: 450px">	<table id="course-table" class="display"></table></div>
+		</div>
+		<h3>Course Info</h3>
+		<div>
+			<div class="metainfo">
+				<div><!-- Name -->
+				<label>Course Name</label>
+				<input type="text" class="cName"/></div>
+				<div><!-- Code -->
+				<label>Course Code</label>
+				<input type="text" class="cCode"/></div>
+				<div><!-- Domain -->
+				<label>Domain</label>
+				<select class="cDomain"></select></div>
+				<div><!-- Visible -->
+				<label>Visiblity</label>
+				<input type="checkbox" class="cVisible"/>This course is visible</div>
+			</div>
+			<div style="clear:both"></div>
+			<label style="padding-left:6px"><a id="mastery-link" href="" style="color:blue;text-decoration:none" target="_blank">Link to Course in Mastery Grid</a></label>	
+			<div class="submitAction"></div>
+			<div style="float:left; width: 630px">
+				<div class="title1">Resources &amp; Providers</div>
+				<div class="rList" style="float:left; width:320px;">
+					<div class="plate rplate">
+						<ol class="resources">
+						</ol>
+					</div>
+					<div class="funcWrapper" id="rFunction">
+						<ul class="functions ui-widget ui-helper-clearfix">
+							<li class="ui-state-default ui-corner-all" title="Edit this resource"><span id="editResource" class="ui-icon ui-icon-pencil"></span></li>
+							<li class="ui-state-default ui-corner-all" title="Add a resource"><span id="addResource" class="ui-icon ui-icon-plus"></span></li>
+							<li class="ui-state-default ui-corner-all" title="Delete this resource"><span id="delResource" class="ui-icon ui-icon-trash"></span></li>
+						</ul>
+					</div>
+				</div>
+				<div class="proList" style="float:left; width:300px; margin-left: 10px;">
+					<div class="plate proplate">
+						<ol class="providers">
+						</ol>
+					</div>
+					<div class="funcWrapper" id="proFunction">
+						<ul class="functions ui-widget ui-helper-clearfix">
+							<li class="ui-state-default ui-corner-all" title="Delete this provider"><span id="delProvider" class="ui-icon ui-icon-trash"></span></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div style="float:left; width:310px; margin-left:20px;" class="providers">
+				<div class="title1">Available Content Packages</div>
+				<div class="plate propoolplate">
+					<ol class="propool">
+					</ol>
+				</div>
+				<div class="proInfo">
+					<!-- Added by hardik -->
+					<button class="update_resources" type="button"><img src="./public/images/refresh.png"/>Update Resources</button>
+				</div>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+		<h3>Topic Editing</h3>
+		<div>
+			<div class="leftWrapper">
+				<div class="uList">
+					<div class="title1">Units</div>
+					<div class="plate uplate">
+						<ol class="units">
+						</ol>
+					</div>
+					<div class="funcWrapper" id="uFunction">
+						<ul class="functions ui-widget ui-helper-clearfix">
+							<li class="ui-state-default ui-corner-all" title="Edit this unit"><span id="editUnit" class="ui-icon ui-icon-pencil"></span></li>
+							<li class="ui-state-default ui-corner-all" title="Add a unit"><span id="addUnit" class="ui-icon ui-icon-plus"></span></li>
+							<li class="ui-state-default ui-corner-all" title="Delete this unit"><span id="delUnit" class="ui-icon ui-icon-trash"></span></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="rightWrapper">
+				<div class="title1">Resources</div>
+				<div id="rTab">
+					<ul></ul>
+				</div>
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+	</div>
+	
+<div class="toolbar">
+	<div style="float: left">
+		<button class="topic edit_t" type="button"><img src="./public/images/edit_ico.png"/>Edit Topics</button>
+	</div>
+	<div style="float: right">
+		<button class="meta edit_m" type="button"><img src="./public/images/edit_ico.png"/>Edit Course Info</button>
+		<button class="meta clone" type="button"><img src="./public/images/copy_ico.png"/>Clone Course</button>
+		<button class="meta add" type="button"><img src="./public/images/new_ico.png"/>New Course</button>
+		<button class="del" type="button"><img src="./public/images/del_ico.png"/>Delete Course</button>
+	</div>
+	<div style="clear:both"></div>
+</div>
+</div>
+
+<!-- Preview window -->
+<div class="preview" title="Preview"></div>
+<!-- Loading mask -->
+<div id="loadMask"></div>
+
+<!-- Dialogs -->
+<!-- courseEdit Dialog -->
+<div id="cEditDialog"  title="Edit this Course">
+	<!-- Name -->
+	<label>Course Name</label>
+	<input type="text" class="cName"/>
+	<!-- Code -->
+	<label>Course Code</label>
+	<input type="text" class="cCode"/>
+	<!-- Domain -->
+	<label>Domain</label>
+	<select class="cDomain"></select><br><br>
+	<!-- Visible -->
+	<input type="checkbox" class="cVisible"/>This course is visible
+</div>
+<!-- courseAdd Dialog -->
+<div id="cAddDialog" title="Add a new Course">
+	<!-- Name -->
+	<label>Course Name</label>
+	<input type="text" class="cName"/>
+	<!-- Code -->
+	<label>Course Code</label>
+	<input type="text" class="cCode"/>
+	<!-- Domain -->
+	<label>Domain</label>
+	<select class="cDomain"></select><br><br>
+	<!-- Visible -->
+	<input type="checkbox" class="cVisible"/>This course is visible
+</div>
+<!-- courseDel Dialog -->
+<div id="cDelDialog" title="Confirm to delete this course">
+	<!-- Name -->
+	<label>Do you really want to delete this course? The loss of this procedure is unable to recover.</label>
+	<label>Please type 'DELETE' (case sensitive) in the box below:</label>
+	<input type="text" class="confirm"/>
+</div>
+<!-- courseClo Dialog -->
+<div id="cCloDialog" title="Clone this course">
+	<!-- Name -->
+	<label>Please type the name of the new course:</label>
+	<input type="text" class="cName"/>
+</div>
+<!-- resourceEdit Dialog -->
+<div id="rEditDialog" title="Edit this resource">
+	<!-- Name -->
+	<label>Please type the new name of this resource:</label>
+	<input type="text" class="rName"/>
+</div>
+<!-- resourceAdd Dialog -->
+<div id="rAddDialog" title="Add a new resource">
+	<!-- Name -->
+	<label>Please type the name of the new resource:</label>
+	<input type="text" class="rName"/>
+</div>
+<!-- resourceDel Dialog -->
+<div id="rDelDialog" title="Confirm to delete this resource">
+	<!-- Name -->
+	<label>Do you really want to delete this resource? The loss of this procedure is unable to recover.</label>
+	<label>Please type 'DELETE' (case sensitive) in the box below:</label>
+	<input type="text" class="confirm"/>
+</div>
+<!-- unitEdit Dialog -->
+<div id="uEditDialog" title="Edit this unit">
+	<!-- Name -->
+	<label>Please type the new name for this unit:</label>
+	<input type="text" class="uName"/>
+</div>
+<!-- unitAdd Dialog -->
+<div id="uAddDialog" title="Add a new unit">
+	<!-- Name -->
+	<label>Please type the name for the new unit:</label>
+	<input type="text" class="uName"/>
+</div>
+<!-- unitDel Dialog -->
+<div id="uDelDialog" title="Confirm to delete this unit">
+	<!-- Name -->
+	<label>Do you really want to delete this unit? The loss of this procedure is unable to recover.</label>
+	<label>Please type 'DELETE' (case sensitive) in the box below:</label>
+	<input type="text" class="confirm"/>
+</div>
+<!-- Dialog ends -->
+
+<!-- Info Sign -->
+<div id="infoSign" title="Message:">
+	<div class='infoMsg'>
+	</div>
+</div>
+<!-- Info Sign ends -->
+
+</div> <!-- This is for the Spinner -->	
+
+</body>
+
+</html>
