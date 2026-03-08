@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!--   -->
+	<!-- User Data Access Part -->
+	<bean id="UserP2DAO" class="com.pawslab.toolsuc.user.UserP2DAO">
+		<property name="dataSource" ref="portal2" />
+	</bean>
+	<bean id="UserUM2DAO" class="com.pawslab.toolsuc.user.UserUM2DAO">
+		<property name="dataSource" ref="um2" />
+	</bean>
+	<bean id="UserAGGDAO" class="com.pawslab.toolsuc.user.UserAGGDAO">
+		<property name="dataSource" ref="aggregate" />
+	</bean>
+</beans>
